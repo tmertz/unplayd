@@ -1,0 +1,33 @@
+=== EC Unplay'd ===
+Contributors: tmertz
+Donate link: http://evilcorporation.dk/projects/ec-unplayd/
+Tags: games, progress tracker, unplayd, unplayed, 
+Requires at least: 3.9.1
+Tested up to: 3.9.1
+Stable tag: 1.0
+
+Log, track and rate your games across a multitude of popular platforms. Upload artwork and write reviews. This does it all. 
+
+Inspired by Shaun Inman's Unplayed script, and powered by WordPress' powerful custom post type framework.
+
+== Description ==
+
+Log, track and rate your games across a multitude of popular platforms. Upload artwork and write reviews. This does it all. 
+
+Inspired by Shaun Inman's Unplayed script, and powered by WordPress' powerful custom post type framework.
+
+== Installation ==
+
+1. Install via the plugin manager
+1. Activate plugin via plugin manager
+1. Add the shortcode to any post or page. You add the shortcode via **[unplayd]** shorttag.
+1. Log your games via the menu option in WordPress' administration interface.
+1. ???
+1. Profit!
+
+Attention: Profit is not guaranteed. ;)
+
+== Changelog ==
+
+= 1.0 =
+* Initial release.
