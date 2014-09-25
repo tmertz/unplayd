@@ -1,0 +1,89 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Unplay'd\n"
+"POT-Creation-Date: 2014-09-25 10:16+0100\n"
+"PO-Revision-Date: 2014-09-25 10:16+0100\n"
+"Last-Translator: Thomas Mertz <tm@peytz.dk>\n"
+"Language-Team: Thomas Mertz <thomas@tmertz.com>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/metaboxes.inc.php:9
+msgid "Rating"
+msgstr "Vurdering"
+
+#: includes/shortcodes.inc.php:76
+msgid "ago"
+msgstr "siden"
+
+#: includes/shortcodes.inc.php:87
+msgid "No games have been added to Unplay'd yet."
+msgstr "Der er ikke blevet tilføjet nogen spil til Unplay'd endnu."
+
+#: unplayd.php:28
+msgid "Games"
+msgstr "Spil"
+
+#: unplayd.php:29 unplayd.php:31
+msgid "Game"
+msgstr "Spil"
+
+#: unplayd.php:30
+msgid "Unplay'd"
+msgstr "Unplay'd"
+
+#: unplayd.php:32
+msgid "Add New"
+msgstr "Tilføj nyt"
+
+#: unplayd.php:33
+msgid "Add New Game"
+msgstr "Tilføj nyt spil"
+
+#: unplayd.php:34
+msgid "New Game"
+msgstr "Nyt spil"
+
+#: unplayd.php:35
+msgid "Edit Game"
+msgstr "Rediger spil"
+
+#: unplayd.php:36
+msgid "View Game"
+msgstr "Vis spil"
+
+#: unplayd.php:37
+msgid "All Games"
+msgstr "Alle spil"
+
+#: unplayd.php:38
+msgid "Search Games"
+msgstr "Søg i spil"
+
+#: unplayd.php:39
+msgid "Parent Games:"
+msgstr "Forældre Spil:"
+
+#: unplayd.php:40
+msgid "No games found."
+msgstr "Ingen spil fundet."
+
+#: unplayd.php:41
+msgid "No games found in Trash."
+msgstr "Ingen spil fundet i papirkurven."
+
+#: unplayd.php:66
+msgid "Progress"
+msgstr "Fremskridt"
+
+#: unplayd.php:87
+msgid "Platform"
+msgstr "Platform"

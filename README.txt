@@ -1,6 +1,6 @@
-=== EC Unplay'd ===
+=== Unplay'd ===
 Contributors: tmertz
-Donate link: http://evilcorporation.dk/projects/ec-unplayd/
+Donate link: http://ihateithe.re/projects/unplayd/
 Tags: games, progress tracker, unplayd, unplayed, 
 Requires at least: 3.9.1
 Tested up to: 3.9.1

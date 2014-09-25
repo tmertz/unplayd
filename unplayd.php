@@ -1,29 +1,44 @@
 <?php
 /**
- * Plugin Name: EC Unplay'd
+ * Plugin Name: Unplay'd
  * Plugin URI: http://evilcorporation.dk/projects/ec-unplayd/
  * Description: Giving Shaun Inmans 'Unplayed' the WordPress treatment. Track your gaming progress easily.
  * Version: 1.0
  * Author: Thomas Mertz
- * Author URI: http://evilcorporation.dk/
+ * Author URI: http://ihateithe.re/
  */
 
-function ec_unplayd_init() {
+/*---------------
+ *
+ * LOCALIZATION
+ *
+ *--------------*/
+function unplayd_load_translations() {
+	load_plugin_textdomain('unplayd_plugin', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+add_action('init', 'unplayd_load_translations');
+
+/*---------------
+ *
+ * INIT AND CPT REGISTRATION
+ *
+ *--------------*/
+function unplayd_plugin_init() {
 	$labels = array(
-		'name'               => __( 'Games', 'ec_unplayd' ),
-		'singular_name'      => __( 'Game', 'ec_unplayd' ),
-		'menu_name'          => __( 'Games', 'ec_unplayd' ),
-		'name_admin_bar'     => __( 'Game', 'ec_unplayd' ),
-		'add_new'            => __( 'Add New', 'ec_unplayd' ),
-		'add_new_item'       => __( 'Add New Game', 'ec_unplayd' ),
-		'new_item'           => __( 'New Game', 'ec_unplayd' ),
-		'edit_item'          => __( 'Edit Game', 'ec_unplayd' ),
-		'view_item'          => __( 'View Game', 'ec_unplayd' ),
-		'all_items'          => __( 'All Games', 'ec_unplayd' ),
-		'search_items'       => __( 'Search Games', 'ec_unplayd' ),
-		'parent_item_colon'  => __( 'Parent Games:', 'ec_unplayd' ),
-		'not_found'          => __( 'No games found.', 'ec_unplayd' ),
-		'not_found_in_trash' => __( 'No games found in Trash.', 'ec_unplayd' )
+		'name'               => __( 'Games', 'unplayd_plugin' ),
+		'singular_name'      => __( 'Game', 'unplayd_plugin' ),
+		'menu_name'          => __( 'Unplay\'d', 'unplayd_plugin' ),
+		'name_admin_bar'     => __( 'Game', 'unplayd_plugin' ),
+		'add_new'            => __( 'Add New', 'unplayd_plugin' ),
+		'add_new_item'       => __( 'Add New Game', 'unplayd_plugin' ),
+		'new_item'           => __( 'New Game', 'unplayd_plugin' ),
+		'edit_item'          => __( 'Edit Game', 'unplayd_plugin' ),
+		'view_item'          => __( 'View Game', 'unplayd_plugin' ),
+		'all_items'          => __( 'All Games', 'unplayd_plugin' ),
+		'search_items'       => __( 'Search Games', 'unplayd_plugin' ),
+		'parent_item_colon'  => __( 'Parent Games:', 'unplayd_plugin' ),
+		'not_found'          => __( 'No games found.', 'unplayd_plugin' ),
+		'not_found_in_trash' => __( 'No games found in Trash.', 'unplayd_plugin' )
 	);
 
 	$args = array(
@@ -42,41 +57,41 @@ function ec_unplayd_init() {
 		'menu_position'      => null,
 		'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt' )
 	);
-	register_post_type( 'ec_unplayd_games', $args );
+	register_post_type( 'unplayd_plugin_games', $args );
 	
 	register_taxonomy(
-		'ec_unplayd_progress',
-		'ec_unplayd_games',
+		'unplayd_plugin_progress',
+		'unplayd_plugin_games',
 		array(
-			'label' => __( 'Progress' ),
+			'label' => __( 'Progress', 'unplayd_plugin' ),
 			'rewrite' => array( 'slug' => 'progress' ),
 			'hierarchical' => true,
 		)
 	);
     
-    $ec_unplayd_progress_presets_installed = get_option( 'ec_unplayd_progress_presets_installed' );
-	if( !$ec_unplayd_progress_presets_installed ) {
+    $unplayd_plugin_progress_presets_installed = get_option( 'unplayd_plugin_progress_presets_installed' );
+	if( !$unplayd_plugin_progress_presets_installed ) {
 		$progressStates = array( 'Unplayed', 'Unbeaten', 'Beaten', 'Abandoned' );
         foreach( $progressStates as $progressState ){
-            if( !term_exists( $progressState, 'ec_unplayd_progress' ) ){
-                wp_insert_term( $progressState, 'ec_unplayd_progress' );
+            if( !term_exists( $progressState, 'unplayd_plugin_progress' ) ){
+                wp_insert_term( $progressState, 'unplayd_plugin_progress' );
             }
         }
-		update_option( 'ec_unplayd_progress_presets_installed', TRUE );
+		update_option( 'unplayd_plugin_progress_presets_installed', TRUE );
 	}
 	
 	register_taxonomy(
-		'ec_unplayd_platform',
-		'ec_unplayd_games',
+		'unplayd_plugin_platform',
+		'unplayd_plugin_games',
 		array(
-			'label' => __( 'Platform' ),
+			'label' => __( 'Platform', 'unplayd_plugin' ),
 			'rewrite' => array( 'slug' => 'platform' ),
 			'hierarchical' => true,
 		)
 	);
 	
-	$ec_unplayd_platforms_presets_installed = get_option( 'ec_unplayd_platforms_presets_installed' );
-	if( !$ec_unplayd_platforms_presets_installed ) {
+	$unplayd_plugin_platforms_presets_installed = get_option( 'unplayd_plugin_platforms_presets_installed' );
+	if( !$unplayd_plugin_platforms_presets_installed ) {
 		$platforms = array( 
 			"Xbox 360",
 			"Xbox One", 
@@ -107,162 +122,38 @@ function ec_unplayd_init() {
 			"Nintendo DS" 
 		);
         foreach( $platforms as $singlePlatform ){
-            if( !term_exists( $singlePlatform, 'ec_unplayd_platform' ) ){
-                wp_insert_term( $singlePlatform, 'ec_unplayd_platform' );
+            if( !term_exists( $singlePlatform, 'unplayd_plugin_platform' ) ){
+                wp_insert_term( $singlePlatform, 'unplayd_plugin_platform' );
             }
         }
-		update_option( 'ec_unplayd_platforms_presets_installed', TRUE );
+		update_option( 'unplayd_plugin_platforms_presets_installed', TRUE );
 	}
 	
 }
-add_action( 'init', 'ec_unplayd_init' );
+add_action( 'init', 'unplayd_plugin_init' );
 
-function ec_unplayd_queue() {
+/*---------------
+ *
+ * CSS & JS QUEUEING
+ *
+ *--------------*/
+function unplayd_plugin_queue() {
 	wp_enqueue_style( 'unplayd-fontawesome', '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' );
 	wp_enqueue_style( 'unplayd-core', plugin_dir_url( __FILE__ ) . 'assets/css/ec-unplayd.css' );
 	wp_enqueue_script( 'unplayd-js', plugin_dir_url( __FILE__ ) . 'assets/js/ec-unplayd-min.js', array('jquery'), '1.0', true );
 }
-add_action( 'wp_enqueue_scripts', 'ec_unplayd_queue' );
+add_action( 'wp_enqueue_scripts', 'unplayd_init' );
 
 /*---------------
  *
- * LOCALIZATION
+ * METABOXES
  *
  *--------------*/
-function ec_unplayd_load_translations() {
-	load_plugin_textdomain('ec_unplayd', false, basename( dirname( __FILE__ ) ) . '/languages/' );
-}
-add_action('init', 'ec_unplayd_load_translations');
+require_once('includes/metaboxes.inc.php');
 
 /*---------------
  *
- * SHORTCODE
+ * SHORTCODES
  *
  *--------------*/
-function show_unplayd( $atts ){
-	
-	$attributes = shortcode_atts( array(
-		'progress' => FALSE,
-		'platform' => FALSE
-	), $atts );
-	
-	$tax_query = array(
-		'relation' => 'AND'
-	);
-	
-	if( strlen( $attributes["progress"] )>0 ) {
-		array_push($tax_query, array(
-			'taxonomy' => 'ec_unplayd_progress',
-			'field' => 'slug',
-			'terms' => $attributes["progress"]
-			)
-		);
-	}
-	if( strlen( $attributes["platform"] )>0 ) {
-		array_push($tax_query, array(
-			'taxonomy' => 'ec_unplayd_platform',
-			'field' => 'slug',
-			'terms' => $attributes["platform"]
-			)
-		);
-	}
-	
-	$unplayd_args = array(
-		'posts_per_page' => 10,
-		'post_type' => 'ec_unplayd_games',
-		'orderby' => 'title',
-		'order' => 'ASC',
-		'tax_query' => $tax_query
-	);
-	
-	$unplayd = new WP_Query($unplayd_args);
-	
-	if( $unplayd->have_posts() ) {
-		
-		$output .= '<ul class="unplayd-content">';
-		
-		while( $unplayd->have_posts() ) { $unplayd->the_post();
-		
-			$excerpt = apply_filters( 'the_content', get_the_excerpt() );
-			$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
-			
-			$terms = wp_get_post_terms( get_the_ID(), array('progress','platform') );
-			$progressName = $terms[0]->name;
-			$platformName = $terms[1]->name;
-			
-			$ratingStars = get_post_meta( get_the_ID(), 'ec_unplayd_game_rating', true);
-			$i = 0;
-			while( $i < $ratingStars ) {
-				$ratingStarsString .= '<i class="fa fa-star"></i>';
-				$i++;
-			}
-			
-			$blankStars = 5 - $ratingStars;
-			$i = 0;
-			while( $i < $blankStars ) {
-				$blankStarsString .= '<i class="fa fa-star-o"></i>';
-				$i++;
-			}
-			
-			$output .= '<li class="'.implode( " ", get_post_class( 'ec-unplayd unplayd' ) ).'">';
-			$output .= '<h4><span class="unplayd-ratings">'.$ratingStarsString.$blankStarsString.'</span><a href="#" class="open">' . get_the_title() . '</a></h4>';
-			$output .= '<div class="unplayd-body">';
-			$output .= $excerpt;
-			$output .= '<p class="unplayd-meta"><small>'.$platformName.' · '.$progressName.' · ' . human_time_diff( get_the_time('U'), current_time('timestamp') ).' '.__('ago', 'ec_unplayd').'</small></p>';
-			$output .= '</div>';
-			$output .= '</li>';
-			
-			unset($ratingStarsString);
-			unset($blankStarsString);
-		}
-		$output .= '</ul>';
-	
-	} else {
-	
-		$output .= '<p>No games have been added to Unplay\'d yet.</p>';
-	
-	}
-	
-	return $output;
-}
-add_shortcode( 'unplayd', 'show_unplayd' );
-
-/*---------------
- *
- * META BOXES
- *
- *--------------*/
-add_action( 'add_meta_boxes', 'ec_unplayd_games_rating_metabox' );
-function ec_unplayd_games_rating_metabox() {
-	add_meta_box( 'unplayd-games-rating', 'Rating', 'ec_unplayd_rating_metabox', 'ec_unplayd_games', 'advanced', 'high' );
-}
-function ec_unplayd_rating_metabox() { 
-	global $post;
-	$values = get_post_custom( $post->ID );
-	$selected = isset( $values['ec_unplayd_game_rating'] ) ? esc_attr( $values['ec_unplayd_game_rating'][0] ) : ”;
-	wp_nonce_field( 'ec_unplayd_games_rating_nonce', 'rating_meta_box_nonce' );
-?>
-	<select name="ec_unplayd_game_rating">
-		<option value="0" <?php selected( $selected, '0' ); ?>>0 stars</option>
-		<option value="1" <?php selected( $selected, '1' ); ?>>1 stars</option>
-		<option value="2" <?php selected( $selected, '2' ); ?>>2 stars</option>
-		<option value="3" <?php selected( $selected, '3' ); ?>>3 stars</option>
-		<option value="4" <?php selected( $selected, '4' ); ?>>4 stars</option>
-		<option value="5" <?php selected( $selected, '5' ); ?>>5 stars</option>
-	</select>
-<?php }
-
-add_action( 'save_post', 'ec_unplayd_rating_meta_box_save' );
-function ec_unplayd_rating_meta_box_save( $post_id ) {
-	
-	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-	
-	if( !isset( $_POST['rating_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['rating_meta_box_nonce'], 'ec_unplayd_games_rating_nonce' ) ) return;
-	
-	if( !current_user_can( 'edit_post' ) ) return;
-	
-	if( isset( $_POST['ec_unplayd_game_rating'] ) ) {
-		update_post_meta( $post_id, 'ec_unplayd_game_rating', esc_attr( $_POST['ec_unplayd_game_rating'] ) );
-	}
-	
-}
+require_once('includes/shortcodes.inc.php');
