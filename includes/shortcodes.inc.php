@@ -8,7 +8,9 @@ function show_unplayd( $atts ){
 	
 	$attributes = shortcode_atts( array(
 		'progress' => FALSE,
-		'platform' => FALSE
+		'platform' => FALSE,
+		'order'    => 'ASC',
+		'orderby'  => 'title'
 	), $atts );
 	
 	$tax_query = array(
@@ -35,8 +37,8 @@ function show_unplayd( $atts ){
 	$unplayd_args = array(
 		'posts_per_page' => 10,
 		'post_type' => 'unplayd_plugin_games',
-		'orderby' => 'title',
-		'order' => 'ASC',
+		'orderby' => $attributes["orderby"],
+		'order' => $attributes["order"],
 		'tax_query' => $tax_query
 	);
 	
