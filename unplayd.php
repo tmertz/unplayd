@@ -142,7 +142,7 @@ function unplayd_plugin_queue() {
 	wp_enqueue_style( 'unplayd-core', plugin_dir_url( __FILE__ ) . 'assets/css/ec-unplayd.css' );
 	wp_enqueue_script( 'unplayd-js', plugin_dir_url( __FILE__ ) . 'assets/js/ec-unplayd-min.js', array('jquery'), '1.0', true );
 }
-add_action( 'wp_enqueue_scripts', 'unplayd_plugin_queue' );
+#add_action( 'wp_enqueue_scripts', 'unplayd_plugin_queue' );
 
 /*---------------
  *
