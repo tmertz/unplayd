@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Unplay'd\n"
-"POT-Creation-Date: 2014-09-25 10:16+0100\n"
-"PO-Revision-Date: 2014-09-25 10:16+0100\n"
+"POT-Creation-Date: 2014-10-06 12:45+0100\n"
+"PO-Revision-Date: 2014-10-06 12:46+0100\n"
 "Last-Translator: Thomas Mertz <tm@peytz.dk>\n"
 "Language-Team: Thomas Mertz <thomas@tmertz.com>\n"
 "Language: da\n"
@@ -27,6 +27,31 @@ msgstr "siden"
 #: includes/shortcodes.inc.php:87
 msgid "No games have been added to Unplay'd yet."
 msgstr "Der er ikke blevet tilføjet nogen spil til Unplay'd endnu."
+
+#: includes/widget.inc.php:13
+msgid "Currently Playing"
+msgstr "Ligenu spiller jeg"
+
+#: includes/widget.inc.php:14
+msgid "This widget output the game you have marked as currently playing."
+msgstr ""
+"Denne widget viser cover art for det spil du markerer som det du spiller nu."
+
+#: includes/widget.inc.php:53
+msgid "Enter the desired widget title"
+msgstr "Indtast en widgettitel"
+
+#: includes/widget.inc.php:59
+msgid "Enter the post ID for the game you're playing"
+msgstr "Indtast post ID'et for det spil du spiller"
+
+#: includes/widget.inc.php:63
+msgid "Title:"
+msgstr "Titel:"
+
+#: includes/widget.inc.php:67
+msgid "Game ID:"
+msgstr "Spil ID:"
 
 #: unplayd.php:28
 msgid "Games"
