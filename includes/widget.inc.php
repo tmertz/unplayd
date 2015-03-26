@@ -26,6 +26,7 @@ class Currently_Playing_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance['title'] );
 		$gameID = apply_filters( 'widget_game_id', $instance['gamePostID'] );
+		$gameCoverSize = apply_filters( 'widget_game_cover_size', $instance['gameCoverSize'] );
 
 		echo $args['before_widget'];
 		if ( ! empty( $title ) ) {
@@ -33,7 +34,7 @@ class Currently_Playing_Widget extends WP_Widget {
 		}
 		
 		echo '<a href="'. getThumbnailURL( $gameID, FALSE ) .'">';
-		echo get_the_post_thumbnail( $gameID, 'sidebar-game-cover' );
+		echo get_the_post_thumbnail( $gameID, $gameCoverSize );
 		echo '</a>';
 		echo $args['after_widget'];
 	}
@@ -48,24 +49,62 @@ class Currently_Playing_Widget extends WP_Widget {
 	public function form( $instance ) {
 		if ( isset( $instance[ 'title' ] ) ) {
 			$title = $instance[ 'title' ];
-		}
-		else {
+		} else {
 			$title = __( 'Enter the desired widget title', 'unplayd_plugin' );
 		}
 		if ( isset( $instance[ 'gamePostID' ] ) ) {
 			$gameID = $instance[ 'gamePostID' ];
 		}
-		else {
-			$gameID = __( 'Enter the post ID for the game you\'re playing', 'unplayd_plugin' );
+		if ( isset( $instance[ 'gameCoverSize' ] ) ) {
+			$gameCoverSize = $instance[ 'gameCoverSize' ];
 		}
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'unplayd_plugin' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'unplayd_plugin' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'gamePostID' ); ?>"><?php _e( 'Game ID:', 'unplayd_plugin' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'gamePostID' ); ?>" name="<?php echo $this->get_field_name( 'gamePostID' ); ?>" type="text" value="<?php echo esc_attr( $gameID ); ?>">
+			<label for="<?php echo $this->get_field_id( 'gamePostID' ); ?>"><?php _e( 'Which Game Are You Playing?', 'unplayd_plugin' ); ?></label> 
+			<?php 
+			$unplayd_args = array(
+				'posts_per_page' => -1,
+				'post_type' => 'unplayd_plugin_games',
+				'order'    => 'ASC',
+				'orderby'  => 'title'
+			);
+			
+			$unplayd = new WP_Query($unplayd_args);
+			if( $unplayd->have_posts() ) {
+			
+				$output = '<select class="widefat" name="' . $this->get_field_name( 'gamePostID' ) . '" id="unplayd-select">';
+				while( $unplayd->have_posts() ) { $unplayd->the_post();
+					if( get_the_id() == $instance[ 'gamePostID' ] ) {
+						$output .= '<option value="'.get_the_id().'" selected="selected">';
+					} else {
+						$output .= '<option value="'.get_the_id().'">';
+					}
+					$output .= get_the_title();
+					$output .= '</option>';
+				}
+				$output .= '</select>';
+			} else {
+				$output = '<p>You haven\'t added any games to your collection yet.</p>';
+			}
+			echo $output;
+			?>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'gameCoverSize' ); ?>"><?php _e( 'Game Cover Size', 'unplayd_plugin' ); ?></label> 
+			<?php $image_sizes = get_image_sizes(); ?>
+			<select class="widefat" id="<?php echo $this->get_field_id( 'gameCoverSize' ); ?>" name="<?php echo $this->get_field_name( 'gameCoverSize' ); ?>">
+			<?php foreach ($image_sizes as $size_name => $size_attrs) {
+				if( $size_name == $instance[ 'gameCoverSize' ] ) { ?>
+				<option value="<?php echo $size_name ?>" selected="selected"><?php echo ucfirst( $size_name ); ?> (<?php echo $size_attrs['height']; ?> x <?php echo $size_attrs['width']; ?>)</option>
+				<?php } else { ?>
+				<option value="<?php echo $size_name ?>"><?php echo ucfirst( str_replace("-", " ", $size_name ) ); ?> (<?php echo $size_attrs['height']; ?> x <?php echo $size_attrs['width']; ?>)</option>
+				<?php } ?>
+			<?php } ?>
+			</select>
 		</p>
 		<?php 
 	}
@@ -84,6 +123,7 @@ class Currently_Playing_Widget extends WP_Widget {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['gamePostID'] = ( ! empty( $new_instance['gamePostID'] ) ) ? strip_tags( $new_instance['gamePostID'] ) : '';
+		$instance['gameCoverSize'] = ( ! empty( $new_instance['gameCoverSize'] ) ) ? strip_tags( $new_instance['gameCoverSize'] ) : '';
 
 		return $instance;
 	}

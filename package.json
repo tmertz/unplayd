@@ -1,0 +1,42 @@
+{
+  "name": "IHIH WordPress Theme",
+  "version": "1.0",
+  "description": "Personal WordPress Theme",
+  "repository": {
+    "type": "git",
+    "url": "https://git.tmertz.com/mertz/ihih"
+  },
+  "scripts": {
+    "test": "echo \"Notice: no test specified\" && exit 1"
+  },
+  "author": {
+    "Thomas Mertz": "thomas@tmertz.com"
+  },
+  "license": "MIT",
+  "main": "gulpfile.js",
+  "private": true,
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-cache": "*",
+    "gulp-clean": "*",
+    "gulp-concat": "*",
+    "gulp-jshint": "*",
+    "gulp-livereload": "3.0.*",
+    "gulp-load-plugins": "*",
+    "gulp-minify-css": "*",
+    "gulp-rename": "*",
+    "gulp-ruby-sass": "1.0.0-alpha",
+    "gulp-sass": "*",
+    "gulp-size": "*",
+    "gulp-streamify": "*",
+    "gulp-svgmin": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*",
+    "jshint-stylish": "*",
+    "path": "*",
+    "tiny-lr": "*",
+    "npm-check-updates": "*"
+  }
+}

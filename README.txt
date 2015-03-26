@@ -3,8 +3,8 @@ Contributors: tmertz
 Donate link: http://ihateithe.re/projects/unplayd/
 Tags: games, progress tracker, unplayd, unplayed, 
 Requires at least: 3.9.1
-Tested up to: 3.9.1
-Stable tag: 1.0
+Tested up to: 4.1.1
+Stable tag: 1.5
 
 Log, track and rate your games across a multitude of popular platforms. Upload artwork and write reviews. This does it all. 
 
@@ -28,6 +28,10 @@ Inspired by Shaun Inman's Unplayed script, and powered by WordPress' powerful cu
 Attention: Profit is not guaranteed. ;)
 
 == Changelog ==
+
+= 1.5 =
+* Rewrote a large part of the widget, so you can now select both image size and I implemented Select2 to make it easier to choose the game you're currently playing
+* Did a lot of clean up; tweaked code, removed unnecessary source files and more.
 
 = 1.0 =
 * Initial release.

@@ -1,1 +1,0 @@
-jQuery(document).ready(function(){var e=jQuery(".unplayd-content > li > .unplayd-body").hide();jQuery(".unplayd-content > li > h4 > a").click(function(){return jQuery(this).parent().next().hasClass("open")?(e.slideUp(),void e.removeClass("open")):(e.slideUp(),e.removeClass("open"),jQuery(this).parent().next().addClass("open").slideDown(),!1)})});
