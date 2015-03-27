@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Unplay'd\n"
-"POT-Creation-Date: 2014-10-06 12:45+0100\n"
-"PO-Revision-Date: 2014-10-06 12:46+0100\n"
+"POT-Creation-Date: 2015-03-27 13:05+0100\n"
+"PO-Revision-Date: 2015-03-27 13:06+0100\n"
 "Last-Translator: Thomas Mertz <tm@peytz.dk>\n"
 "Language-Team: Thomas Mertz <thomas@tmertz.com>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -20,11 +20,11 @@ msgstr ""
 msgid "Rating"
 msgstr "Vurdering"
 
-#: includes/shortcodes.inc.php:76
+#: includes/shortcodes.inc.php:78
 msgid "ago"
 msgstr "siden"
 
-#: includes/shortcodes.inc.php:87
+#: includes/shortcodes.inc.php:89
 msgid "No games have been added to Unplay'd yet."
 msgstr "Der er ikke blevet tilføjet nogen spil til Unplay'd endnu."
 
@@ -34,81 +34,89 @@ msgstr "Ligenu spiller jeg"
 
 #: includes/widget.inc.php:14
 msgid "This widget output the game you have marked as currently playing."
-msgstr ""
-"Denne widget viser cover art for det spil du markerer som det du spiller nu."
+msgstr "Denne widget viser cover art for det spil du markerer som det du spiller nu."
 
 #: includes/widget.inc.php:53
 msgid "Enter the desired widget title"
 msgstr "Indtast en widgettitel"
 
-#: includes/widget.inc.php:59
-msgid "Enter the post ID for the game you're playing"
-msgstr "Indtast post ID'et for det spil du spiller"
-
 #: includes/widget.inc.php:63
-msgid "Title:"
-msgstr "Titel:"
+msgid "Title"
+msgstr "Titel"
 
 #: includes/widget.inc.php:67
-msgid "Game ID:"
-msgstr "Spil ID:"
+msgid "Which Game Are You Playing?"
+msgstr "Hvilket spil er du igang med at spille?"
 
-#: unplayd.php:28
+#: includes/widget.inc.php:97
+msgid "Game Cover Size"
+msgstr "Coverbilledets størrelse i sidebar"
+
+#: unplayd.php:31
 msgid "Games"
 msgstr "Spil"
 
-#: unplayd.php:29 unplayd.php:31
+#: unplayd.php:32 unplayd.php:34
 msgid "Game"
 msgstr "Spil"
 
-#: unplayd.php:30
+#: unplayd.php:33
 msgid "Unplay'd"
 msgstr "Unplay'd"
 
-#: unplayd.php:32
+#: unplayd.php:35
 msgid "Add New"
 msgstr "Tilføj nyt"
 
-#: unplayd.php:33
+#: unplayd.php:36
 msgid "Add New Game"
 msgstr "Tilføj nyt spil"
 
-#: unplayd.php:34
+#: unplayd.php:37
 msgid "New Game"
 msgstr "Nyt spil"
 
-#: unplayd.php:35
+#: unplayd.php:38
 msgid "Edit Game"
 msgstr "Rediger spil"
 
-#: unplayd.php:36
+#: unplayd.php:39
 msgid "View Game"
 msgstr "Vis spil"
 
-#: unplayd.php:37
+#: unplayd.php:40
 msgid "All Games"
 msgstr "Alle spil"
 
-#: unplayd.php:38
+#: unplayd.php:41
 msgid "Search Games"
 msgstr "Søg i spil"
 
-#: unplayd.php:39
+#: unplayd.php:42
 msgid "Parent Games:"
 msgstr "Forældre Spil:"
 
-#: unplayd.php:40
+#: unplayd.php:43
 msgid "No games found."
 msgstr "Ingen spil fundet."
 
-#: unplayd.php:41
+#: unplayd.php:44
 msgid "No games found in Trash."
 msgstr "Ingen spil fundet i papirkurven."
 
-#: unplayd.php:66
+#: unplayd.php:69
 msgid "Progress"
 msgstr "Fremskridt"
 
-#: unplayd.php:87
+#: unplayd.php:90
 msgid "Platform"
 msgstr "Platform"
+
+#~ msgid "Enter the post ID for the game you're playing"
+#~ msgstr "Indtast post ID'et for det spil du spiller"
+
+#~ msgid "Title:"
+#~ msgstr "Titel:"
+
+#~ msgid "Game ID:"
+#~ msgstr "Spil ID:"
