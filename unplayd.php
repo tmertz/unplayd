@@ -146,6 +146,13 @@ function unplayd_plugin_queue() {
 
 /*---------------
  *
+ * FUNCTIONS
+ *
+ *--------------*/
+require_once('includes/functions.inc.php');
+
+/*---------------
+ *
  * METABOXES
  *
  *--------------*/
