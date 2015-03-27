@@ -3,7 +3,7 @@
  * Plugin Name: Unplay'd
  * Plugin URI: http://evilcorporation.dk/projects/ec-unplayd/
  * Description: Giving Shaun Inmans 'Unplayed' the WordPress treatment. Track your gaming progress easily.
- * Version: 1.0
+ * Version: 1.5
  * Author: Thomas Mertz
  * Author URI: http://ihateithe.re/
  */
