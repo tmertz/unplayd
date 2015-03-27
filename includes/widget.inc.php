@@ -59,11 +59,11 @@ class Currently_Playing_Widget extends WP_Widget {
 		}
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'unplayd_plugin' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'unplayd_plugin' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'gamePostID' ); ?>"><?php _e( 'Game ID:', 'unplayd_plugin' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'gamePostID' ); ?>"><?php _e( 'Which Game Are You Playing?', 'unplayd_plugin' ); ?></label> 
 			<?php 
 			$unplayd_args = array(
 				'posts_per_page' => -1,
@@ -93,7 +93,7 @@ class Currently_Playing_Widget extends WP_Widget {
 			?>
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'gameCoverSize' ); ?>"><?php _e( 'Game Cover Size:', 'unplayd_plugin' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'gameCoverSize' ); ?>"><?php _e( 'Game Cover Size', 'unplayd_plugin' ); ?></label> 
 			<?php $image_sizes = get_image_sizes(); ?>
 			<select class="widefat" name="image_size">
 			<?php foreach ($image_sizes as $size_name => $size_attrs): ?>
