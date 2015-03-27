@@ -4,7 +4,7 @@ Donate link: http://ihateithe.re/projects/unplayd/
 Tags: games, progress tracker, unplayd, unplayed, 
 Requires at least: 3.9.1
 Tested up to: 4.1.1
-Stable tag: 1.5
+Stable tag: 1.5.1
 
 Log, track and rate your games across a multitude of popular platforms. Upload artwork and write reviews. This does it all. 
 
