@@ -26,6 +26,7 @@ class Currently_Playing_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance['title'] );
 		$gameID = apply_filters( 'widget_game_id', $instance['gamePostID'] );
+		$gameCoverSize = apply_filters( 'widget_game_cover_size', $instance['gameCoverSize'] );
 
 		echo $args['before_widget'];
 		if ( ! empty( $title ) ) {
@@ -33,7 +34,7 @@ class Currently_Playing_Widget extends WP_Widget {
 		}
 		
 		echo '<a href="'. getThumbnailURL( $gameID, FALSE ) .'">';
-		echo get_the_post_thumbnail( $gameID, 'sidebar-game-cover' );
+		echo get_the_post_thumbnail( $gameID, $gameCoverSize );
 		echo '</a>';
 		echo $args['after_widget'];
 	}
@@ -95,10 +96,14 @@ class Currently_Playing_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'gameCoverSize' ); ?>"><?php _e( 'Game Cover Size', 'unplayd_plugin' ); ?></label> 
 			<?php $image_sizes = get_image_sizes(); ?>
-			<select class="widefat" name="image_size">
-			<?php foreach ($image_sizes as $size_name => $size_attrs): ?>
-				<option value="<?php echo $size_name ?>"><?php echo ucfirst( $size_name ); ?> (<?php echo $size_attrs['height']; ?> x <?php echo $size_attrs['width']; ?>)</option>
-			<?php endforeach; ?>
+			<select class="widefat" id="<?php echo $this->get_field_id( 'gameCoverSize' ); ?>" name="<?php echo $this->get_field_name( 'gameCoverSize' ); ?>">
+			<?php foreach ($image_sizes as $size_name => $size_attrs) {
+				if( $size_name == $instance[ 'gameCoverSize' ] ) { ?>
+				<option value="<?php echo $size_name ?>" selected="selected"><?php echo ucfirst( $size_name ); ?> (<?php echo $size_attrs['height']; ?> x <?php echo $size_attrs['width']; ?>)</option>
+				<?php } else { ?>
+				<option value="<?php echo $size_name ?>"><?php echo ucfirst( str_replace("-", " ", $size_name ) ); ?> (<?php echo $size_attrs['height']; ?> x <?php echo $size_attrs['width']; ?>)</option>
+				<?php } ?>
+			<?php } ?>
 			</select>
 		</p>
 		<?php 
@@ -118,6 +123,7 @@ class Currently_Playing_Widget extends WP_Widget {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['gamePostID'] = ( ! empty( $new_instance['gamePostID'] ) ) ? strip_tags( $new_instance['gamePostID'] ) : '';
+		$instance['gameCoverSize'] = ( ! empty( $new_instance['gameCoverSize'] ) ) ? strip_tags( $new_instance['gameCoverSize'] ) : '';
 
 		return $instance;
 	}
