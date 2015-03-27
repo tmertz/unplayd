@@ -1,0 +1,26 @@
+{
+  "name": "Kin",
+  "version": "0.9-beta",
+  "homepage": "https://tmertz.github.io/kin/",
+  "authors": [
+    "Thomas Mertz <thomas@tmertz.com>"
+  ],
+  "description": "An open source closed social network.",
+  "keywords": [
+    "social",
+    "network",
+    "webapp"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+  }
+}
