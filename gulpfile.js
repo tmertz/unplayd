@@ -27,6 +27,17 @@ gulp.task( 'sass', function() {
 		.pipe(gulp.dest('assets/css/'));						// Set the destination to assets/css
 	util.log(util.colors.yellow('Sass compiled & minified'));	// Output to terminal
 });
+gulp.task( 'sass-admin', function() {
+	gulp.src([
+		'assets/src/sass/unplayd-admin.scss'])								// Gets the apps scss
+		.pipe(sass())												// Compile sass
+		.on('error', function (err) { console.log(err.message); })  // Handle sass errors
+		.pipe(concat('unplayd-admin.css'))									// Concat all css
+		.pipe(rename({suffix: '.min'}))								// Rename it
+		.pipe(minifycss())											// Minify the CSS
+		.pipe(gulp.dest('assets/css/'));						// Set the destination to assets/css
+	util.log(util.colors.yellow('Admin: Sass compiled & minified'));	// Output to terminal
+});
 
 /**
  * Get all the JS, concat and uglify
@@ -44,6 +55,33 @@ gulp.task('javascripts', function(){
 		.pipe(gulp.dest('assets/js/'))					// Set destination to assets/js
 		util.log(util.colors.yellow('Javascripts compiled and minified'));
 });
+gulp.task('javascripts-admin', function(){
+	gulp.src([
+		//'assets/src/vendors/jquery/dist/jquery.js',
+		'assets/src/vendors/select2/select2.js',
+		// moving on...
+		'assets/src/js/unplayd-admin.js'])								// Gets all the user JS _*.js from assets/js
+		.on('error', function (err) { console.log(err.message); })  // Handle sass errors
+		.pipe(concat('unplayd-admin.js'))						// Concat all the scripts
+		.pipe(rename({suffix: '.min'}))					// Rename it
+		.pipe(uglify())									// Uglify & minify it
+		.pipe(gulp.dest('assets/js/'))					// Set destination to assets/js
+		util.log(util.colors.yellow('Admin: Javascripts compiled and minified'));
+});
+
+/**
+ * Move task.
+ */
+gulp.task('move', function() {
+	gulp.src("assets/src/vendors/select2/select2-spinner.gif")
+		.pipe(gulp.dest('assets/images/'));
+	gulp.src("assets/src/vendors/select2/select2.png")
+		.pipe(gulp.dest('assets/images/'));
+	gulp.src("assets/src/vendors/select2/select2x2.png")
+		.pipe(gulp.dest('assets/images/'));
+	util.log(util.colors.yellow('Select2 assets moved'));	// Output to terminal
+});
+
 
 /**
  * Clean up
@@ -67,9 +105,9 @@ gulp.task('watch', function(){
 /**
  * Compile task.
  */
-gulp.task('compile', ['sass', 'javascripts', 'clean']);
+gulp.task('compile', ['sass', 'sass-admin', 'javascripts', 'javascripts-admin', 'move', 'clean']);
 
 /**
  * Default gulp task.
  */
-gulp.task('default', ['sass', 'javascripts', 'clean', 'watch']);
+gulp.task('default', ['sass', 'sass-admin', 'javascripts', 'javascripts-admin', 'move', 'clean', 'watch']);

@@ -75,7 +75,7 @@ class Currently_Playing_Widget extends WP_Widget {
 			$unplayd = new WP_Query($unplayd_args);
 			if( $unplayd->have_posts() ) {
 			
-				$output = '<select class="widefat" name="' . $this->get_field_name( 'gamePostID' ) . '">';
+				$output = '<select class="widefat" name="' . $this->get_field_name( 'gamePostID' ) . '" id="unplayd-select">';
 				while( $unplayd->have_posts() ) { $unplayd->the_post();
 					if( get_the_id() == $instance[ 'gamePostID' ] ) {
 						$output .= '<option value="'.get_the_id().'" selected="selected">';

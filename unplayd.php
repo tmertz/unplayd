@@ -140,9 +140,15 @@ add_action( 'init', 'unplayd_plugin_init' );
 function unplayd_plugin_queue() {
 	//wp_enqueue_style( 'unplayd-fontawesome', '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' );
 	wp_enqueue_style( 'unplayd-css', plugin_dir_url( __FILE__ ) . 'assets/css/unplayd.min.css' );
-	wp_enqueue_script( 'unplayd-js', plugin_dir_url( __FILE__ ) . 'assets/js/unplayd.min.js', array('jquery'), '1.0', true );
+	//wp_enqueue_script( 'unplayd-js', plugin_dir_url( __FILE__ ) . 'assets/js/unplayd.min.js', array('jquery'), '1.0', true );
 }
-#add_action( 'wp_enqueue_scripts', 'unplayd_plugin_queue' );
+add_action( 'wp_enqueue_scripts', 'unplayd_plugin_queue' );
+
+function my_admin_enqueue_scripts( $hook_suffix ) {
+	wp_enqueue_style( 'unplayd-admin-css', plugin_dir_url( __FILE__ ) . 'assets/css/unplayd-admin.min.css' );
+	wp_enqueue_script( 'unplayd-admin-js', plugin_dir_url( __FILE__ ) . 'assets/js/unplayd-admin.min.js', array('jquery'), '1.0', true );
+}
+add_action( 'admin_enqueue_scripts', 'my_admin_enqueue_scripts' );
 
 /*---------------
  *

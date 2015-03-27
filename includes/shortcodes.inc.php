@@ -73,9 +73,9 @@ function show_unplayd( $atts ){
 			
 			$output .= '<li class="'.implode( " ", get_post_class( 'ec-unplayd unplayd' ) ).'">';
 			$output .= '<h4><span class="unplayd-ratings">'.$ratingStarsString.$blankStarsString.'</span><a href="#" class="open">' . get_the_title() . '</a></h4>';
-			$output .= '<div class="unplayd-body">';
+			$output .= '<div class="game-body">';
 			$output .= $excerpt;
-			$output .= '<p class="unplayd-meta"><small>'.$platformName.' · '.$progressName.' · ' . human_time_diff( get_the_time('U'), current_time('timestamp') ).' '.__('ago', 'unplayd_plugin').'</small></p>';
+			$output .= '<p class="game-meta"><small>'.$platformName.' · '.$progressName.' · ' . human_time_diff( get_the_time('U'), current_time('timestamp') ).' '.__('ago', 'unplayd_plugin').'</small></p>';
 			$output .= '</div>';
 			$output .= '</li>';
 			
