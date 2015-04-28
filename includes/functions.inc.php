@@ -40,3 +40,14 @@ function get_image_sizes( $size = '' ) {
 
 	return $sizes;
 }
+
+function getThumbnailURL($postID, $echo = TRUE) {
+	$thumb_id = get_post_thumbnail_id($postID);
+	$thumb_url = wp_get_attachment_image_src($thumb_id,'game-cover', true);
+	
+	if( $echo ) {
+		echo $thumb_url[0];
+	} else {
+		return $thumb_url[0];
+	}
+}
